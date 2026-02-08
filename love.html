@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Will You Be My Valentine?</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #ffe6f2; /* Light pink */
+            color: #d63384; /* Darker pink for text */
+            text-align: center;
+            margin: 0;
+            padding: 20px;
+            overflow: hidden; /* For floating hearts */
+        }
+        .cat {
+            font-size: 4em; /* Large cat emoji */
+            margin-bottom: 20px;
+        }
+        .box {
+            border: 3px solid #ffb3d9; /* Pink border for the box */
+            border-radius: 15px;
+            background-color: #fff0f5; /* Light pinkish white */
+            padding: 20px;
+            display: inline-block;
+            position: relative; /* For repositioning */
+            transition: all 0.5s ease; /* Smooth movement */
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+        h1 {
+            font-size: 2.5em;
+            margin-bottom: 20px;
+        }
+        .hearts {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+        }
+        .heart {
+            position: absolute;
+            font-size: 2em;
+            color: #ff69b4; /* Hot pink */
+            animation: float 6s infinite linear;
+        }
+        @keyframes float {
+            0% { transform: translateY(100vh) rotate(0deg); }
+            100% { transform: translateY(-100px) rotate(360deg); }
+        }
+        button {
+            font-size: 1.5em;
+            padding: 10px 20px;
+            margin: 10px;
+            border: none;
+            border-radius: 10px;
+            background-color: #ffb3d9;
+            color: #d63384;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        button:hover {
+            background-color: #ff99cc;
+        }
+        #message {
+            display: none;
+            font-size: 1.2em;
+            margin-top: 20px;
+            line-height: 1.6;
+        }
+        #question {
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <div class="hearts" id="hearts"></div>
+    <div class="cat">🐱</div> <!-- Cute cat emoji holding the box (visually above it) -->
+    <div id="question" class="box">
+        <h1>Will you be my Valentine?</h1>
+        <button id="yesBtn">Yes</button>
+        <button id="noBtn">No</button>
+    </div>
+    <div id="message">
+        <h2>Yay! 💖</h2>
+        <p>My love Sanskriti, I know I am really not perfect and no one is perfect but i [WILL] improve my self I try my best i do the everything to be your side and always be with [YOU] i always thought how is my love going to and who is the girl going to love me and someone handle me or not but you are really the one who gives me chance to [BE] your boyfriend and i sure to God that relies me how much [MY] love is important to someone i really soo soo lucky to have you love and i just wish that you will always Vibrant, Energetic, Loving, Enchanting, Nurturing, Inspirational, Noble, Extraordinary and amazing that you are always 💜 I love you endlessly! ❤️</p>
+    </div>
+
+    <script>
+        // Generate floating hearts
+        const heartsContainer = document.getElementById('hearts');
+        for (let i = 0; i < 20; i++) {
+            const heart = document.createElement('div');
+            heart.className = 'heart';
+            heart.textContent = '❤️';
+            heart.style.left = Math.random() * 100 + '%';
+            heart.style.animationDelay = Math.random() * 6 + 's';
+            heartsContainer.appendChild(heart);
+        }
+
+        // Handle button clicks
+        const yesBtn = document.getElementById('yesBtn');
+        const noBtn = document.getElementById('noBtn');
+        const question = document.getElementById('question');
+        const message = document.getElementById('message');
+
+        noBtn.addEventListener('click', () => {
+            alert("Are you sure? Please click Yes! 😘");
+            // Move the box to a random position on the screen
+            const maxX = window.innerWidth - question.offsetWidth;
+            const maxY = window.innerHeight - question.offsetHeight;
+            const randomX = Math.random() * maxX;
+            const randomY = Math.random() * maxY;
+            question.style.left = randomX + 'px';
+            question.style.top = randomY + 'px';
+            question.style.position = 'absolute'; // Enable absolute positioning for movement
+        });
+
+        yesBtn.addEventListener('click', () => {
+            question.style.display = 'none';
+            message.style.display = 'block';
+        });
+    </script>
+</body>
+</html>
